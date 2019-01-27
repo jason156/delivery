@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_delivery</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_delivery` (
+                `deliveryid`       INT(19) NOT NULL DEFAULT '0',
+                `trackid`          INT(19) DEFAULT NULL,
+                `status`      VARCHAR(128) DEFAULT NULL,
+                `matter`      VARCHAR(128) DEFAULT NULL,
+                `dst`         VARCHAR(512) DEFAULT NULL,
+                `salesorderid`     INT(19) DEFAULT NULL,
+                `shopid`           INT(19) DEFAULT NULL,
+                PRIMARY KEY (`deliveryid`),
+                CONSTRAINT `vtiger_delivery_sofk` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_salesorder` (`salesorderid`),
+                CONSTRAINT `vtiger_delivery_sfk` FOREIGN KEY (`shopid`) REFERENCES `vtiger_shops` (`shopid`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+		</table>
+	</tables>
+</schema>
